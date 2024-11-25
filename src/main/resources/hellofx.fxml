@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.ac.fhcampuswien.jfx.HelloFXController"
+            prefHeight="400.0" prefWidth="600.0">
+        <top>
+            <HBox style="-fx-alignment: baseline-center">
+                <HBox style="-fx-padding: 0 20 0 0">
+                    <Text>Dauer:</Text>
+                </HBox>
+                <HBox style="-fx-padding: 0 20 0 0">
+                    <Text fx:id="uptime" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                </HBox>
+                <HBox style="-fx-padding: 0 20 0 0">
+                    <Text>Status:</Text>
+                </HBox>
+                <HBox style="-fx-padding: 0 20 0 0">
+                    <Text fx:id="status" style="-fx-font-weight: bold"/>
+                </HBox>
+                <HBox style="-fx-padding: 0 20 0 0">
+                    <Text>Sterne:</Text>
+                </HBox>
+                <HBox style="-fx-padding: 0 20 0 0">
+                    <ImageView fx:id="statusImage" fitHeight="25" fitWidth="25"/>
+                </HBox>
+            </HBox>
+        </top>
+        <left>
+            <VBox >
+                <TextArea fx:id="message"/>
+                <Button fx:id="sendMessage" onAction="#handleSendMessageClick">Send</Button>
+            </VBox>
+        </left>
+
+        <right>
+            <VBox>
+                <ImageView fx:id="messageImage">
+                    <preserveRatio>true</preserveRatio>
+                    <fitHeight>180</fitHeight>
+                </ImageView>
+            </VBox>
+        </right>
+
+        <bottom>
+            <HBox>
+                <Text>(c) Musterfirma GmbH</Text>
+            </HBox>
+        </bottom>
+</BorderPane>
