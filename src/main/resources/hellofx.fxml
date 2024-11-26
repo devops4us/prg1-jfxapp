@@ -10,28 +10,15 @@
 <?import javafx.scene.image.ImageView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.ac.fhcampuswien.jfx.HelloFXController"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="at.ac.fhcampuswien.jfx.HelloFXController">
         <top>
-            <HBox style="-fx-alignment: baseline-center">
-                <HBox style="-fx-padding: 0 20 0 0">
-                    <Text>Dauer:</Text>
-                </HBox>
-                <HBox style="-fx-padding: 0 20 0 0">
-                    <Text fx:id="uptime" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                </HBox>
-                <HBox style="-fx-padding: 0 20 0 0">
-                    <Text>Status:</Text>
-                </HBox>
-                <HBox style="-fx-padding: 0 20 0 0">
-                    <Text fx:id="status" style="-fx-font-weight: bold"/>
-                </HBox>
-                <HBox style="-fx-padding: 0 20 0 0">
-                    <Text>Sterne:</Text>
-                </HBox>
-                <HBox style="-fx-padding: 0 20 0 0">
-                    <ImageView fx:id="statusImage" fitHeight="25" fitWidth="25"/>
-                </HBox>
+            <HBox style="-fx-alignment:baseline-center" spacing="20">
+                <Text>Dauer:</Text>
+                <Text fx:id="uptime" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Text>Status:</Text>
+                <Text fx:id="status" style="-fx-font-weight: bold"/>
+                <Text>Sterne:</Text>
+                <ImageView fx:id="statusImage" fitHeight="25" fitWidth="25"/>
             </HBox>
         </top>
         <left>

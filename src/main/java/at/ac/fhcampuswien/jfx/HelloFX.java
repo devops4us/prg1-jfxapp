@@ -21,7 +21,7 @@ public class HelloFX extends Application {
         URL location = getClass().getResource("/hellofx.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(location);
         Pane root = (Pane)fxmlLoader.load();
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         this.controller = fxmlLoader.getController();
         stage.show();
