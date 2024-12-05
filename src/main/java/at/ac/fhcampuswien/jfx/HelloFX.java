@@ -27,6 +27,7 @@ public class HelloFX extends Application {
         stage.show();
     }
 
+    @Override
     public void stop() throws Exception {
         controller.stop();
     }

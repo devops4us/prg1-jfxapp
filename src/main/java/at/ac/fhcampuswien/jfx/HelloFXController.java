@@ -1,5 +1,7 @@
 package at.ac.fhcampuswien.jfx;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -14,12 +16,13 @@ import java.io.ByteArrayInputStream;
  * JFX Controller ist created by the JFX runtime when the hellofx.fxml file is loaded.
  */
 
-public class HelloFXController implements TimerListener
+public class HelloFXController implements EventHandler<ActionEvent>
 {
     static final String TIME_FORMAT="hh:mm:ss";
     static final String DATA_FILE_LOCATION="data/hellofx.dat";
 
     private HelloFXData data;
+    private Timer timer;
 
     @FXML
     private Text status;
@@ -48,13 +51,10 @@ public class HelloFXController implements TimerListener
         this.message.setText(data.getMessageData());
         this.uptime.setText(data.getUpTimeData());
 
-        Timer timer= new Timer(data.getUpTimeData(),this);
+        this.timer= new Timer(data.getUpTimeData(),this);
         timer.start();
     }
 
-    public void handleTimerExpiration(Timer t) {
-        this.uptime.setText(t.getTimeAsString());
-    }
 
     @FXML
     private void handleSendMessageClick() {
@@ -68,4 +68,9 @@ public class HelloFXController implements TimerListener
         data.save();
     }
 
+    @Override
+    public void handle(ActionEvent actionEvent) {
+            this.timer.updateTime();
+            this.uptime.setText(this.timer.getTimeAsString());
+    }
 }

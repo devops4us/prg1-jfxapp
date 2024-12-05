@@ -17,32 +17,25 @@ public class Timer {
     public static final long DURATION = 5000;
 
     private long timeMillis;
-    private TimerListener timerListener;
+    private EventHandler<ActionEvent> timerListener;
 
-    public Timer(String time, TimerListener timerListener)
+    public Timer(String timeString, EventHandler<ActionEvent> timerListener)
     {
         this.timerListener = timerListener;
-        setTimeFromString(time==null?"0:0:0":time);
+        setTimeFromString(timeString==null?"0:0:0":timeString);
     }
 
     public void start()
     {
-        EventHandler<ActionEvent> refreshHandler=
-                new EventHandler<ActionEvent>()
-                {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                       Timer.this.timeMillis+=DURATION;
-                       if(timerListener!=null) {
-                           timerListener.handleTimerExpiration(Timer.this);
-                       }
-                    }
-                };
         Timeline timeline = new Timeline( new KeyFrame(
                 Duration.millis(DURATION),
-                refreshHandler));
+                timerListener));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+    }
+
+    public void updateTime() {
+        this.timeMillis+=DURATION;
     }
 
     private void setTimeFromString(String uptime)
